@@ -19,7 +19,7 @@ public class MultipleChoiceQuestion {
 		
 	}
 	
-	String ask(String question) {
+	String ask() {
 	    String answer = "";
 	    while (true) {
 	      answer = JOptionPane.showInputDialog(question); // Ask the question using "JOptionPane.showInputDialog".
@@ -34,6 +34,22 @@ public class MultipleChoiceQuestion {
 	      }
 	    }
 	  }
+	
+	void check() {
+	    nQuestions++;
+	    String answer = ask();
+	    if (answer.equals(correctAnswer)) {
+	      nCorrect++;
+	      JOptionPane.showMessageDialog(null, "Correct!");
+	    } else {
+	      JOptionPane.showMessageDialog(null, "Incorrect. \r\n" +
+	        "The correct answer is " + correctAnswer);
+	    }
+	  }
+
+	void showResults() {
+		JOptionPane.showMessageDialog(null, nCorrect + " correct out of " + nQuestions + " questions");
+	}
 	
 	public static void main(String[] args) {
 		
