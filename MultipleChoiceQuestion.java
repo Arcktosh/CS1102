@@ -47,7 +47,7 @@ public class MultipleChoiceQuestion {
 	    }
 	  }
 
-	void showResults() {
+	static void showResults() {
 		JOptionPane.showMessageDialog(null, nCorrect + " correct out of " + nQuestions + " questions");
 	}
 	
