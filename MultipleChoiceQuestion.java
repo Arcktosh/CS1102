@@ -1,4 +1,5 @@
-import javax.swing.JOptionPane;
+import java.awt.*;
+import javax.swing.*;
 
 public class MultipleChoiceQuestion extends Question {
 
@@ -10,30 +11,22 @@ public class MultipleChoiceQuestion extends Question {
 			String e, // variable 6
 			String answer // variable 7
 	) {
-		question = query + "\n";
-		question += "A. " + a + "\n";
-		question += "B. " + b + "\n";
-		question += "C. " + c + "\n";
-		question += "D. " + d + "\n";
-		question += "E. " + e + "\n";
+		super(query);
+		addChoice("A",a);
+		addChoice("B",b);
+		addChoice("C",c);
+		addChoice("D",d);
+		addChoice("E",e);
+		initQuestionDialog();
 		correctAnswer = answer.toUpperCase();
 	}
-
-	String ask() {
-		String answer = "";
-		while (true) {
-			answer = JOptionPane.showInputDialog(question); // Ask the question using "JOptionPane.showInputDialog".
-			answer = answer.toUpperCase(); // Allow the user to provide a lower-case answer, and convert it to upper
-											// case.
-			if (answer.equals("A") || answer.equals("B") || answer.equals("C") || answer.equals("D")
-					|| answer.equals("E")) {
-				// Ask the user the question repeatedly until the user provides a valid answer:
-				// "A", "B", "C", "D", or "E".
-				return answer; // returns a valid answer in upper case
-			} else {
-				// Display a response for invalid answers
-				JOptionPane.showMessageDialog(null, "Invalid answer. Please enter A, B, C, D, or E.");
-			}
-		}
+	void addChoice(String name, String label) {
+		JPanel choice = new JPanel(new BorderLayout());
+		JButton button = new JButton(name);
+		button.addActionListener(question);
+		choice.add(button,BorderLayout.WEST);
+		choice.add(new JLabel(label+"",JLabel.LEFT),BorderLayout.CENTER);
+		question.add(choice);
 	}
+	
 }

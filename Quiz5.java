@@ -1,4 +1,4 @@
-public class Quiz {
+public class Quiz5 {
 	public static void main(String[] args) {
 		// Question 1
 		Question question = new MultipleChoiceQuestion("What word is spelled incorrectly in every single dictionary?",
@@ -34,7 +34,6 @@ public class Quiz {
 		// Question 9
 		question = new TrueFalseQuestion("Light travels faster than sound.", "TRUE");
 		question.check();
-		
 		// Question 10
 		question = new TrueFalseQuestion("The Great Wall of China is visible from the Moon.", "FALSE");
 		question.check();
